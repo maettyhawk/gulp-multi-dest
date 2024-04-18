@@ -26,6 +26,7 @@
   "homepage": "https://github.com/kdelmonte/gulp-multi-dest#readme",
   "dependencies": {
     "async": "^1.5.2",
+    "lead": "^4.0.0",
     "through2": "^2.0.1"
   },
   "devDependencies": {
