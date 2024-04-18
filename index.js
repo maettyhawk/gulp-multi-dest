@@ -3,7 +3,6 @@ var PLUGIN_NAME = 'gulp-multi-dest';
 var through = require('through2');
 var gulp = require('gulp');
 var async = require('async');
-var lead = require('lead');
 
 module.exports = function (paths, options) {
 	options = options || {};
@@ -24,7 +23,9 @@ module.exports = function (paths, options) {
 				writtenFiles.push(fileClone);
 				wroteFileToDest();
 			});
-		}, done);
+		}).then( () => {
+			done(null, file);
+		});
 	}
 
 	function flushCreatedFiles(done) {
@@ -36,5 +37,5 @@ module.exports = function (paths, options) {
 		done();
 	}
 
-	return lead(through.obj(writeFileToMultipleDestinations, flushCreatedFiles));
+	return through.obj(writeFileToMultipleDestinations, flushCreatedFiles);
 };
