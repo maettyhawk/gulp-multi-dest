@@ -23,9 +23,8 @@ module.exports = function (paths, options) {
 				writtenFiles.push(fileClone);
 				wroteFileToDest();
 			});
-		}).then( () => {
-			done(null, file);
 		});
+		done(null, file);
 	}
 
 	function flushCreatedFiles(done) {
